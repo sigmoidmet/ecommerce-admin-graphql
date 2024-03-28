@@ -139,6 +139,32 @@ Create several microservices:
       2. Queries:
          1. productVariant(variantId)
          2. productVariants(productId)
+   8. Market - A market is a group of one or more regions that you want to target for international sales
+      1. Fields:
+         1. enabled - boolean
+         2. id
+         3. name
+         4. url
+         5. isPrimary - boolean
+      2. Connections:
+         1. catalogs - list of [MarketCatalog]
+         2. regions - list of [Region]
+      3. Queries:
+         1. market(id)
+         2. marketByGeography(countryCode)
+         3. primaryMarket
+         4. markets
+      4. Mutations:
+         1. marketCreate
+         2. marketRegionDelete(regionId)
+         3. marketRegionsCreate
+         4. marketUpdate
+   9. Region
+      1. Fields:
+         1. id
+         2. name
+         3. currencyCode
+         4. countryCode
 
 Common types:
 1. Image:
