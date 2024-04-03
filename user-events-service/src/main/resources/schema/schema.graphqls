@@ -1,0 +1,63 @@
+# Queries
+type Query {
+    abandonment(id: ID!): Abandonment
+}
+
+# Types
+type Abandonment {
+    id: ID!
+    checkoutPayload: CheckoutPayload
+    type: AbandonmentType!
+    createdAt: DateTime!
+    customerId: ID!
+    cartUrl: String
+    visitStartedAt: DateTime!
+    productsAddedToCart(
+        first: Int,
+        after: String,
+        last: Int,
+        before: String
+    ): AbandonmentProductsConnection
+    productsViewed(
+        first: Int,
+        after: String,
+        last: Int,
+        before: String
+    ): AbandonmentProductsConnection
+}
+
+type CheckoutPayload {
+    url: String!
+    productsQuantity: Int!
+    totalPrice: Monetary!
+    app: App
+}
+
+type App @key(fields: "id") @extends {
+    id: ID @external
+}
+
+type Product @key(fields: "id") @extends {
+    id: ID @external
+}
+
+# Connections
+type AbandonmentProductsConnection {
+    edges: [AbandonmentProductEdge]
+}
+
+type AbandonmentProductEdge {
+    cursor: String!
+    node: Product
+}
+
+# Enums
+enum AbandonmentType {
+    BROWSE
+    CART
+    CHECKOUT
+}
+
+# Scalars
+scalar Monetary
+scalar DateTime
