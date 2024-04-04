@@ -51,6 +51,11 @@ type AbandonmentProductEdge {
     node: Product
 }
 
+type Monetary {
+    value: Float!
+    currency: String!
+}
+
 # Enums
 enum AbandonmentType {
     BROWSE
@@ -59,5 +64,4 @@ enum AbandonmentType {
 }
 
 # Scalars
-scalar Monetary
 scalar DateTime
