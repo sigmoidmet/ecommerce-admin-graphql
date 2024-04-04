@@ -16,4 +16,21 @@
         <maven.compiler.target>21</maven.compiler.target>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.github.deweyjose</groupId>
+                <artifactId>graphqlcodegen-maven-plugin</artifactId>
+                <configuration>
+                    <packageName>net.ecommerce.events.graphql</packageName>
+                    <schemaPaths>
+                        <path>src/main/resources/schema/schema.graphqls</path>
+                    </schemaPaths>
+                    <generateBoxedTypes>true</generateBoxedTypes>
+                    <writeToFiles>true</writeToFiles>
+                    <generateDocs>true</generateDocs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

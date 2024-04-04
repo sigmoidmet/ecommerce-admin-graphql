@@ -1,6 +1,6 @@
 # Queries
 type Query {
-    abandonment(id: ID!): Abandonment
+    abandonmentsAfter(createdAfterDate: DateTime!): [Abandonment!]!
 }
 
 # Types
@@ -53,7 +53,7 @@ type AbandonmentProductEdge {
 
 type Monetary {
     value: Float!
-    currency: String!
+    currency: Currency!
 }
 
 # Enums
@@ -65,3 +65,4 @@ enum AbandonmentType {
 
 # Scalars
 scalar DateTime
+scalar Currency
